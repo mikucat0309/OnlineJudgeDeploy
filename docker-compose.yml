@@ -62,8 +62,11 @@ services:
     restart: always
     depends_on:
       redis:
+        condition: service_started
       postgres:
+        condition: service_healthy
       judge:
+        condition: service_started
     # user: '1000'
     volumes:
       - ./data/backend:/data
